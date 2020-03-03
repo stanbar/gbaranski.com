@@ -1,151 +1,187 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Liquidy" />
-    <meta name="keywords" content="vape, e-ciggarette, epapierosy, liqud" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Local files -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <!-- Importing bootstrap and others -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://use.fontawesome.com/af8436954f.js"></script>
-  </head>
-  <body>
-    <div id="navbar">
-      <a href="#default" id="logo">GBARANSKI</a>
-    </div>
 
-    <header style="margin-top: 100px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <img class="img-responsive" src="img/profile.png" alt="" />
-            <div class="intro-text">
-              <span class="name">Hello, my name is Grzegorz</span>
-              <hr class="star-light" />
-              <span class="skills"
-                >15 years old <br />
-                New in coding<br />
-                Cell phone service technician<br />
-                Help Desk manager at stasbar
-              </span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Liquidy" />
+  <meta name="keywords" content="vape, e-ciggarette, epapierosy, liqud" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Local files -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- Importing bootstrap and others -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/af8436954f.js"></script>
+  <script src="js/javascript.js"></script>
+</head>
+
+<body>
+  <div id="navbar">
+    <a href="#default" id="logo">GBARANSKI</a>
+  </div>
+
+  <header style="margin-top: 100px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <img class="img-responsive" src="img/profile.png" alt="" />
+          <div class="intro-text">
+            <span class="name">Hello, my name is Grzegorz</span>
+            <hr class="star-light" />
+            <span class="skills">I'm <span id="age">loading age...</span> old</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <header style="background-color: white; color: #212121;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="intro-text">
+            <span class="name">What i have done</span>
+          </div>
+          <hr class="star-dark" />
+          <div class="card-group" style="margin-top: 80px;">
+            <div class="card">
+              <div class="card-header">
+                Download speed calculator
+              </div>
+              <div class="card-body">
+                <p class="card-text" style="font-size: large;">
+                  Those are my first steps in Javascript, you can check out this page <a
+                    href="https://calculator.gbaranski.com/" target="_blank">here</a>
+                  <p><img class="centerimg" src="img/calculator_screenshot.PNG"></p>
+                </p>
+              </div>
+              <div class="card-footer text-muted">created <span class="time" id="downloadSpeedCalculatorDate">loading...
+                </span>ago
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                Alarm clock on ESP module
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  My second project made in C++, isn't done yet.
+                </p>
+              </div>
+              <div class="card-footer text-muted">created <span class="time" id="alarmClockEspDate">loading...
+                </span>ago
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                Contributing in Google Code-in
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  It was at the very beginning with programming
+                  <p><img class="centerimg" src="img/gci_certificate.jpg"></p>
+                </p>
+              </div>
+              <div class="card-footer text-muted">last commit <span class="time" id="googleCodeInDate">loading...
+                </span>ago
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </header>
-
-    <header style="background-color: white; color: #212121;">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="intro-text">
-              <span class="name">What i have done</span>
-              <hr class="star-dark" />
-              <div class="card-group" style="margin-top: 80px;">
-                <div class="card">
-                    <div class="card-header">
-                        Alarm Clock on ESP8266
-                      </div>
-                    <div class="card-body">
-                    <p class="card-text" style="font-size: large;">Anything</p>
-                  </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        ESP8266 Web Server
-                      </div>
-                    <div class="card-body">
-                    <p class="card-text">Anything</p>
-                  </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        My own website
-                      </div>
-                    <div class="card-body">
-                    <p class="card-text">Anything</p>
-                  </div>
-                </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card-group" style="margin-top: 80px;">
+            <div class="card">
+              <div class="card-header">
+                Water mixer on ESP module
               </div>
+              <div class="card-body">
+                <p class="card-text" style="font-size: large;">
+                  Everyday i had to walk to the bathroom and click button to start mixing hot and cold water, now i can
+                  do that via my phone
+                </p>
+              </div>
+              <div class="card-footer text-muted">created <span class="time" id="waterMixerEspDate">loading...
+                </span>ago
               </div>
             </div>
+            <div class="card">
+              <div class="card-header">
+                Liquid Manager
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  Desktop app made in C++, not done yet, i modeled on <a href="https://vapetool.app/"
+                    target="_blank">Vape
+                    tool</a> app, mine is not finished yet
+                </p>
+              </div>
+              <div class="card-footer text-muted">created <span class="time" id="liquidManagerDate">loading...
+                </span>ago
+              </div>
             </div>
-            <a style="margin-top:20px;" href="#" class="btn btn-primary"> Check out those projects on github <i class="fa fa-github" aria-hidden="true"></i>
-            </a>
-          </div>   
-        </header>
-    </header>
 
-    <footer
-      id="sticky-footer"
-      class="py-4 text-white-50"
-      style="background-color: #2C3E50;"
-    >
-      <div class="container text-center">
-        <table>
-          <tr>
-            <a href="https://github.com/gbaranski"
-              ><img src="img/githublogo.png"
-            /></a>
-          </tr>
-          <tr>
-            &nbsp;&nbsp;
-            <a href="https://www.linkedin.com/in/grzegorz-baranski-191b83165/">
-              <img src="img/linkedin.ico"
-            /></a>
-          </tr>
-        </table>
+          </div>
+        </div>
       </div>
-    </footer>
-    <footer
-      id="sticky-footer"
-      class="py-4 text-white-50"
-      style="background: #233140;"
-    >
-      <div class="container text-center">
-        <small>Page is open source, available on <a href="https://github.com/gbaranski"> github</a>.</small>
-      </div>
-    </footer>
-    <script>
-      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-      window.onscroll = function() {
-        scrollFunction();
-      };
+      <a style="margin-top:20px;" href="https://github.com/gbaranski" target="_blank" class="btn btn-primary"> Check out
+        my projects on
+        github <i class="fa fa-github" aria-hidden="true"></i>
+      </a>
+    </div>
+  </header>
+  </header>
 
-      function scrollFunction() {
-        if (
-          document.body.scrollTop > 80 ||
-          document.documentElement.scrollTop > 80
-        ) {
-          document.getElementById("navbar").style.padding = "20px 10px";
-          document.getElementById("logo").style.fontSize = "30px";
-        } else {
-          document.getElementById("navbar").style.padding = "30px 10px";
-          document.getElementById("logo").style.fontSize = "35px";
-        }
+  <footer id="sticky-footer" class="py-4 text-white-50" style="background-color: #2C3E50;">
+    <div class="container text-center">
+      <table>
+        <tr>
+          <a href="https://github.com/gbaranski"><img src="img/githublogo.png" /></a>
+        </tr>
+        <tr>
+          &nbsp;&nbsp;
+          <a href="https://www.linkedin.com/in/grzegorz-baranski-191b83165/">
+            <img src="img/linkedin.ico" /></a>
+        </tr>
+      </table>
+    </div>
+  </footer>
+  <footer id="sticky-footer" class="py-4 text-white-50" style="background: #233140;">
+    <div class="container text-center">
+      <small>Page is open source, available on <a href="https://github.com/gbaranski"> github</a>.</small>
+    </div>
+  </footer>
+  <script>
+    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        document.getElementById("navbar").style.padding = "20px 10px";
+        document.getElementById("logo").style.fontSize = "30px";
+      } else {
+        document.getElementById("navbar").style.padding = "30px 10px";
+        document.getElementById("logo").style.fontSize = "35px";
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>

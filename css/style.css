@@ -105,3 +105,16 @@ hr.star-dark {
 .card {
   font-family: "Raleway", sans-serif;
 }
+.centerimg
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  border-radius: 15px;
+}
+
+.time
+{
+  font-size: 18px;
+}
