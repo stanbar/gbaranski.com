@@ -1,17 +1,37 @@
+
+window.onscroll = function() {shrinkNavbar()};
+function shrinkNavbar() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+  document.getElementById("logo-container").style.fontSize = "50px";
+  document.getElementById("navbar").style.height = "70px";
+  document.getElementById("navbar").style.lineHeight = "70px";
+
+} else {
+  document.getElementById("logo-container").style.fontSize = "60px";
+  document.getElementById("navbar").style.height = "100px";
+  document.getElementById("navbar").style.lineHeight = "100px";
+
+}
+}
+
 var result;
-function onLoadFunc() {
+function getTimes() {
     calcTimeDifference("2004-09-19");
     document.getElementById("age").innerHTML = result;
-    calcTimeDifference("2020-03-01");
-    document.getElementById("downloadSpeedCalculatorDate").innerHTML = result;
-    calcTimeDifference("2020-01-24");
-    document.getElementById("alarmClockEspDate").innerHTML = result;
     calcTimeDifference("2020-01-12");
     document.getElementById("googleCodeInDate").innerHTML = result;
-    calcTimeDifference("2020-01-07");
+    calcTimeDifference("2020-01-13");
     document.getElementById("waterMixerEspDate").innerHTML = result;
-    calcTimeDifference("2020-02-07");
-    document.getElementById("liquidManagerDate").innerHTML = result;
+    calcTimeDifference("2020-01-24");
+    document.getElementById("alarmClockEspDate").innerHTML = result;
+    calcTimeDifference("2020-03-01");
+    document.getElementById("downloadSpeedCalculatorDate").innerHTML = result;
+    calcTimeDifference("2020-03-04");
+    document.getElementById("olxBotDate").innerHTML = result;
+    calcTimeDifference("2020-03-10");
+    document.getElementById("desktopAlarmClockDate").innerHTML = result;
+
+
 }
 function calcTimeDifference(endDate) {
     var nowDate = moment(); //todays date
@@ -23,4 +43,3 @@ function calcTimeDifference(endDate) {
     result = diffYears + diffMonths + diffDays;
     console.log(result);
 }
-window.onload = onLoadFunc;

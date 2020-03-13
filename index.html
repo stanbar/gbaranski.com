@@ -1,201 +1,222 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Personal Webpage" />
-  <meta name="keywords" content="gbaranski" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Local files -->
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <!-- Importing bootstrap and others -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="https://use.fontawesome.com/af8436954f.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <meta name="description" content="Personal website gbaranski">
+  <meta name="keywords" content="gbaranski, develpper">
+  <meta name="author" content="Grzegorz Baranski">
+  <title>Grzegorz Baranski Personal Website</title>
+
+  <!-- CSS  -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:800|Titillium+Web:300&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/f30044dc4a.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
   <script src="js/javascript.js"></script>
 </head>
 
-<body>
-  <div id="navbar">
-    <a href="#default" id="logo">GBARANSKI</a>
+<body onload="getTimes(); shrinkNavbar();">
+
+  <div class="navbar-fixed">
+    <nav id="navbar" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo fontLogo">GBARANSKI</a>
+    </nav>
   </div>
 
-  <header style="margin-top: 100px;">
+  <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <img class="img-responsive" src="img/profile.png" alt="" />
-          <div class="intro-text">
-            <span class="name">Hello, my name is Grzegorz</span>
-            <hr class="star-light" />
-            <span class="skills">I'm <span id="age">loading age...</span> old</span>
-          </div>
+      <br><br>
+      <h1 class="header center white-text bigMontSerrat">GRZEGORZ BARANSKI</h1>
+      <hr class="linewhite">
+      <div class="row center">
+        <h5 class="header col s12 white-text">Im <span id="age">loading...</span> years old</h5>
+      </div>
+      <br><br>
 
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+      <br><br>
+      <div class="center bigMontSerrat">WHAT I HAVE DONE</div>
+      <hr class="lineblack">
+      <br><br>
+      <div class="row">
+
+        <div class="col s12 m4">
+          <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="img/gci_certificate.jpg">
+            </div>
+            <div class="card-content">
+              <i class="material-icons right card-title activator">arrow_upward</i>
+              <span class="card-title activator grey-text text-darken-4">Contributing in Code-in</span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Contributing in Code-in<i class="material-icons right">close</i></span>
+              It was at the very beginning with programming
+              <br>
+              <br>
+              <div>
+                Last commit <span id="googleCodeInDate">Loading...</span> ago
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="col s12 m4">
+          <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="img/no-img.jpg">
+            </div>
+            <div class="card-content">
+              <i class="material-icons right card-title activator">arrow_upward</i>
+              <span class="card-title activator grey-text text-darken-4">Water mixer on ESP module</span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Water mixer on ESP module<i class="material-icons right">close</i></span>
+              Everyday i had to walk to the bathroom and click button to start mixing hot and cold water, now i can do that via my phone using WiFi connection
+              <br>
+              <a href="https://github.com/gbaranski/watermixer-esp" target="_blank">Github Repository</a>
+              <br>
+              <br>
+              <div>
+                Created <span id="waterMixerEspDate">Loading...</span> ago
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="img/no-img.jpg">
+            </div>
+            <div class="card-content">
+              <i class="material-icons right card-title activator">arrow_upward</i>
+              <span class="card-title activator grey-text text-darken-4">Alarm Clock on ESP module</span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Alarm Clock on ESP module<i class="material-icons right">close</i></span>
+              My second project using ESP module, its not finished yet, have to do some soldering
+              <br>
+              <a href="https://github.com/gbaranski/alarmclock-esp" target="_blank">Github Repository</a>
+              <br>
+              <br>
+              <div>
+                Created <span id="alarmClockEspDate">loading...</span> ago
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- New row -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="img/calculator_screenshot.png">
+            </div>
+            <div class="card-content">
+              <i class="material-icons right card-title activator">arrow_upward</i>
+              <span class="card-title activator grey-text text-darken-4">Download speed calculator</span>
+              <p><a href="https://calculator.gbaranski.com/" target="_blank">calculator.gbaranski.com</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Download speed calculator<i class="material-icons right">close</i></span>
+              Those are my first steps in Javascript, you can check out this <a target="_blank" href="https://calculator.gbaranski.com/">page</a>
+              <br>
+              <a href="https://github.com/gbaranski/calculator.gbaranski.com" target="_blank">Github Repository</a>
+              <br>
+              <br>
+              Created <span id="downloadSpeedCalculatorDate">loading...</span> ago
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="img/olxcrawler.png">
+            </div>
+            <div class="card-content">
+              <i class="material-icons right card-title activator">arrow_upward</i>
+              <span class="card-title activator grey-text text-darken-4">Olx.pl crawler</span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Olx.pl crawler<i class="material-icons right">close</i></span>
+              Script made in python, it takes all offers and allows you to send message to seller and many other things, still working on it.
+              <br>
+              <a href="https://github.com/gbaranski/olx-bot" target="_blank">Github Repository</a>
+              <br>
+              <br>
+              Created <span id="olxBotDate">loading...</span> ago
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="img/desktopAlarmClock.png">
+            </div>
+            <div class="card-content">
+              <i class="material-icons right card-title activator">arrow_upward</i>
+              <span class="card-title activator grey-text text-darken-4">Desktop alarm clock in Electron framework</span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Desktop alarm clock in Electron framework<i class="material-icons right">close</i></span>
+              Desktop Alarm clock made in Javascript using Electron framework, it can be used on all platforms
+              <br>
+              <a href="https://github.com/gbaranski/desktop-alarm-js" target="_blank">Github Repository</a>
+              <br>
+              <br>
+              Created <span id="desktopAlarmClockDate">loading...</span> ago
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="githubButton">
+        <a href="https://github.com/gbaranski" target="_blank" class="center btn-large waves-effect waves-light blue-grey darken-4 githubButton">Check out my projects on github <i class="fab fa-github"></i></a>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row center">
+        <table>
+          <tr>
+            <a target="_blank" href="https://github.com/gbaranski"><img src="img/githublogo.png" /></a>
+          </tr>
+          <tr>
+            &nbsp;&nbsp;
+            <a target="_blank" href="https://www.linkedin.com/in/grzegorz-baranski-191b83165/">
+              <img src="img/linkedin.ico" /></a>
+          </tr>
+        </table>
       </div>
     </div>
-  </header>
-
-  <header style="background-color: white; color: #212121;">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="intro-text">
-            <span class="name">What i have done</span>
-          </div>
-          <hr class="star-dark" />
-          <div class="card-group" style="margin-top: 80px;">
-            <div class="card">
-              <div class="card-header">
-                Download speed calculator
-              </div>
-              <div class="card-body">
-                <p class="card-text" style="font-size: large;">
-                  Those are my first steps in Javascript, you can check out this page <a
-                    href="https://calculator.gbaranski.com/" target="_blank">here</a>
-                  <p><img class="centerimg" src="img/calculator_screenshot.PNG"></p>
-                </p>
-              </div>
-              <div class="card-footer text-muted">created <span class="time" id="downloadSpeedCalculatorDate">loading...
-                </span>ago
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                Alarm clock on ESP module
-              </div>
-              <div class="card-body">
-                <p class="card-text">
-                  My second project made in C++, isn't done yet.
-                </p>
-              </div>
-              <div class="card-footer text-muted">created <span class="time" id="alarmClockEspDate">loading...
-                </span>ago
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                Contributing in Google Code-in
-              </div>
-              <div class="card-body">
-                <p class="card-text">
-                  It was at the very beginning with programming
-                  <p><img class="centerimg" src="img/gci_certificate.jpg"></p>
-                </p>
-              </div>
-              <div class="card-footer text-muted">last commit <span class="time" id="googleCodeInDate">loading...
-                </span>ago
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="footer-copyright">
+      <div class="container center">
+        Made using materialize-css, page is open source, available <a href="https://github.com/gbaranski/gbaranski.com" target="_blank">here</a>
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card-group" style="margin-top: 80px;">
-            <div class="card">
-              <div class="card-header">
-                Water mixer on ESP module
-              </div>
-              <div class="card-body">
-                <p class="card-text" style="font-size: large;">
-                  Everyday i had to walk to the bathroom and click button to start mixing hot and cold water, now i can
-                  do that via my phone
-                </p>
-              </div>
-              <div class="card-footer text-muted">created <span class="time" id="waterMixerEspDate">loading...
-                </span>ago
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                Liquid Manager
-              </div>
-              <div class="card-body">
-                <p class="card-text">
-                  Desktop app made in C++, not done yet, i modeled on <a href="https://vapetool.app/"
-                    target="_blank">Vape
-                    tool</a> app, mine is not finished yet
-                </p>
-              </div>
-              <div class="card-footer text-muted">created <span class="time" id="liquidManagerDate">loading...
-                </span>ago
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                Olx.pl Crawler
-              </div>
-              <div class="card-body">
-                <p class="card-text">
-                  Script made in python, it takes all offers and allows you to send message to seller and many other things, still working on it.
-                  <p><img style="width:100% " class="centerimg" src="img/olxcrawler.png"></p>
-                </p>
-              </div>
-              <div class="card-footer text-muted">created <span class="time" id="liquidManagerDate">loading...
-                </span>ago
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <a style="margin-top:20px;" href="https://github.com/gbaranski" target="_blank" class="btn btn-primary"> Check out
-        my projects on
-        github <i class="fa fa-github" aria-hidden="true"></i>
-      </a>
-    </div>
-  </header>
-  </header>
-
-  <footer id="sticky-footer" class="py-4 text-white-50" style="background-color: #2C3E50;">
-    <div class="container text-center">
-      <table>
-        <tr>
-          <a href="https://github.com/gbaranski"><img src="img/githublogo.png" /></a>
-        </tr>
-        <tr>
-          &nbsp;&nbsp;
-          <a href="https://www.linkedin.com/in/grzegorz-baranski-191b83165/">
-            <img src="img/linkedin.ico" /></a>
-        </tr>
-      </table>
     </div>
   </footer>
-  <footer id="sticky-footer" class="py-4 text-white-50" style="background: #233140;">
-    <div class="container text-center">
-      <small>Page is open source, available on <a href="https://github.com/gbaranski"> github</a>.</small>
-    </div>
-  </footer>
-  <script>
-    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-    window.onscroll = function () {
-      scrollFunction();
-    };
 
-    function scrollFunction() {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        document.getElementById("navbar").style.padding = "20px 10px";
-        document.getElementById("logo").style.fontSize = "30px";
-      } else {
-        document.getElementById("navbar").style.padding = "30px 10px";
-        document.getElementById("logo").style.fontSize = "35px";
-      }
-    }
-  </script>
+
 </body>
 
 </html>
