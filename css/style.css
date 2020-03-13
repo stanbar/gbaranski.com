@@ -5,12 +5,24 @@
  *
  * Made By MaterializeCSS.com
  */
+@media all and (min-width: 960px) {
+   .bigMontSerrat { font-size: 70px; }
+}
+@media all and (max-width: 959px) and (min-width: 600px) {
+   .bigMontSerrat { font-size: 60px; }
+}
+@media all and (max-width: 599px) and (min-width: 320px) {
+   .bigMontSerrat{ font-size: 50px; }
+}
+@media all and (max-width: 319px) {
+  .bigMontSerrat{ font-size: 30px; }
+}
  body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  width: 100%;
 }
-
 main {
   flex: 1 0 auto;
 }
@@ -20,7 +32,6 @@ main {
 }
 .bigMontSerrat {
   font-family: 'Montserrat', sans-serif;
-  font-size: 70px;
 }
 hr.lineblack {
   border: 2px solid black;

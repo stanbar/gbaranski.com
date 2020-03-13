@@ -2,14 +2,14 @@
 window.onscroll = function() {shrinkNavbar()};
 function shrinkNavbar() {
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-  document.getElementById("logo-container").style.fontSize = "50px";
+  document.getElementById("logo-container").style.fontSize = "40px";
   document.getElementById("navbar").style.height = "70px";
   document.getElementById("navbar").style.lineHeight = "70px";
 
 } else {
-  document.getElementById("logo-container").style.fontSize = "60px";
-  document.getElementById("navbar").style.height = "100px";
-  document.getElementById("navbar").style.lineHeight = "100px";
+  document.getElementById("logo-container").style.fontSize = "45px";
+  document.getElementById("navbar").style.height = "90px";
+  document.getElementById("navbar").style.lineHeight = "90px";
 
 }
 }
