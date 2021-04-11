@@ -13,8 +13,9 @@ googleAnalytics = "G-E2VXN66JK3"  # add your tracking id
   description = "Personal website, some information about what I work on"
   favicon = "favicon.ico"  # path to a .ico to use as favicon
   logo = ""  # url or path to a logo to put in the header
+
   [params.footer]
-    text = "by gbaranski"
+    text = "by gbaranski using Hugo"
     url = "https://github.com/gbaranski/gbaranski.com"
 
 [permalinks]
