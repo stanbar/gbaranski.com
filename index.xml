@@ -6,5 +6,17 @@
     <description>Recent content on Grzegorz Baranski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://gbaranski.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://gbaranski.com/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gbaranski.com/projects/</guid>
+      <description>My projects All of them are available on my Github profile
+Houseflow Home automation platform, the project in which I put the most effort. Started it at the very beginning of the programming journey. This project involves a lot of different topics, like networking, electronics, mobile and web development, databases, devops, etc.
+Made using
+ Rust for high performance networking services with low memory footprint. My plan is to run that on cheap Raspberry Pi.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -4,5 +4,8 @@
   <url>
     <loc>https://gbaranski.com/</loc>
     <priority>0</priority>
+  </url><url>
+    <loc>https://gbaranski.com/projects/</loc>
+    <priority>0</priority>
   </url>
 </urlset>
