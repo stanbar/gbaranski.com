@@ -22,9 +22,7 @@ It enables triggering events, like turning on lights, on connected IoT devices.
 
 ## Goal
 
-Create CLI application for the the [Houseflow](/projects/#houseflow) backend, similar to the [`ncspot`](https://github.com/hrkfdn/ncspot) client for the Spotify, using the cursive.
-
-Create something similar to [`ncspot`](https://github.com/hrkfdn/ncspot), a Spotify client in CLI that uses the [`cursive`](https://github.com/gyscos/cursive).
+The goal of this project is to create something similar to [`ncspot`](https://github.com/hrkfdn/ncspot), a Spotify client in CLI that uses the [`cursive`](https://github.com/gyscos/cursive).
 
 ![screenshot of running ncspot](/img/ncspot-screenshot.png)
 
