@@ -2,7 +2,7 @@
 title = "Creating ncurses-like TUI Applications in Rust using Cursive"
 date = 2021-05-12
 author = "gbaranski"
-tags = ["rust", "tui", "houseflow"]
+tags = ["rust", "cursive", "tui", "houseflow"]
 description = """This post is my process of creating TUI application in Rust for [Houseflow](/projects/#houseflow), it will be used to trigger some events on embedded devices, like turning on lights and etc. 
 """
 showFullContent = false
@@ -17,7 +17,9 @@ showFullContent = false
 
 ## Introduction
 
-This post is my process of creating TUI application in Rust for Houseflow, it will be used to trigger some events on embedded devices, like turning on lights and etc. 
+This post is my process of creating TUI application in Rust for Houseflow, it
+will be used to trigger some events on embedded devices, like turning on lights
+and etc. 
 
 ## Goal
 
