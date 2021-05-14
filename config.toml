@@ -1,12 +1,17 @@
-baseURL = "https://gbaranski.com"
+baseURL = "/"
 languageCode = "en-us"
-title = "Grzegorz Baranski"
-theme = "researcher"
+title = "About"
+theme = "terminal"
+paginate = 5
 
-disableKinds = ["taxonomy", "term"]
 enableEmoji = true
 math = false
-googleAnalytics = "G-E2VXN66JK3"  # add your tracking id
+googleAnalytics = "G-E2VXN66JK3"
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+
 
 [params]
   author = "Grzegorz Baranski"
@@ -14,9 +19,67 @@ googleAnalytics = "G-E2VXN66JK3"  # add your tracking id
   favicon = "favicon.ico"  # path to a .ico to use as favicon
   logo = ""  # url or path to a logo to put in the header
 
-  [params.footer]
-    text = "by gbaranski using Hugo"
-    url = "https://github.com/gbaranski/gbaranski.com"
+  # dir name of your blog content (default is `content/posts`).
+  # the list of set content will show up on your index page (baseurl).
+  contentTypeName = "posts"
 
-[permalinks]
-  "/" = "/:filename"
+  # ["orange", "blue", "red", "green", "pink"]
+  themeColor = "blue"
+
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems = 2
+
+  # show selector to switch language
+  showLanguageSelector = false
+
+  # set theme to full screen width
+  fullWidthTheme = false
+
+  # center theme with default width
+  centerTheme = true
+
+  
+  # set a custom favicon (default is a `themeColor` square)
+  # favicon = "favicon.ico"
+
+  # set post to show the last updated
+  # If you use git, you can set `enableGitInfo` to `true` and then post will automatically get the last updated
+  showLastUpdated = false
+  # Provide a string as a prefix for the last update date. By default, it looks like this: 2020-xx-xx [Updated: 2020-xx-xx] :: Author
+  # updatedDatePrefix = "Updated"
+
+  # set all headings to their default size (depending on browser settings)
+  # it's set to `true` by default
+  # oneHeadingSize = false
+
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    title = "gbaranski"
+    subtitle = "My dev blog"
+    owner = "gbaranski"
+    keywords = ""
+    copyright = ""
+    menuMore = "Show more"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+    newerPosts = "Newer posts"
+    olderPosts = "Older posts"
+    missingContentMessage = "Page not found..."
+    missingBackButtonLabel = "Back to home page"
+
+    [languages.en.params.logo]
+      logoText = "gbaranski"
+      logoHomeLink = "/"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+
+      [[languages.en.menu.main]]
+        identifier = "projects"
+        name = "Projects"
+        url = "/projects"

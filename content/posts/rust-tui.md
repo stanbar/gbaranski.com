@@ -1,11 +1,19 @@
----
-author: "Grzegorz Baranski"
-date: 2021-05-12
-title: "TUI Application in Rust for Houseflow"
-link-title: "TUI Application in Rust for Houseflow"
-highlight: true
++++
+title = "Creating ncurses-like TUI Applications in Rust using Cursive"
+date = 2021-05-12
+author = "gbaranski"
+tags = ["rust", "tui", "houseflow"]
+description = """This post is my process of creating TUI application in Rust for [Houseflow](/projects/#houseflow), it will be used to trigger some events on embedded devices, like turning on lights and etc. 
+"""
+showFullContent = false
 
----
++++
+
+{{< rawhtml >}}
+<p>
+  <img src="/img/rust-tui/cover.png"
+</p>
+{{< /rawhtml >}}
 
 ## Introduction
 
@@ -15,7 +23,7 @@ This post is my process of creating TUI application in Rust for Houseflow, it wi
 
 I'd like to make something similar to [`ncspot`](https://github.com/hrkfdn/ncspot), Spotify Client in CLI, which is using [`cursive`](https://github.com/gyscos/cursive).
 
-![screenshot of running ncspot](/ncspot-screenshot.png)
+![screenshot of running ncspot](/img/ncspot-screenshot.png)
 
 ## Getting started
 
@@ -76,7 +84,7 @@ cargo run
 
 What we should see is screen with simple Dialog
 
-![screenshot of program with dialog on middle of the screen](/houseflow-tui/basic.png)
+![screenshot of program with dialog on middle of the screen](/img/rust-tui/basic.png)
 
 
 ### Defining types for Device
@@ -237,7 +245,7 @@ fn main() -> anyhow::Result<()> {
 
 And it looks something like that
 
-![screenshot of program with selectview](/houseflow-tui/selectview.png)
+![screenshot of program with selectview](/img/rust-tui/selectview.png)
 
 
 #### Showing dialog to user on submit callback
@@ -286,7 +294,7 @@ fn main() -> anyhow::Result<()> {
 
 And now we're able to select specific device, and dialog will pop up
 
-![screenshot of program with selectview with dialog](/houseflow-tui/dialog-popup.png)
+![screenshot of program with selectview with dialog](/img/rust-tui/dialog-popup.png)
 
 #### Sending HTTP request with Send Command button
 
@@ -349,7 +357,7 @@ fn submit_callback(siv: &mut Cursive, device: Device) {
 }
 ```
 
-![gif of program sending http request](/houseflow-tui/send-http-request.gif)
+![gif of program sending http request](/img/rust-tui/send-http-request.gif)
 
 ## Fixing movement
 

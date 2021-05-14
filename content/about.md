@@ -1,15 +1,12 @@
++++
+title = "About"
+date = "2021-05-14"
+author = "gbaranski"
++++
+
 # About me
 
-{{< figure class="avatar" src="/avatar.jpg" >}}
 High school student. Open-source enthusiast, full stack experience with different kind of applications, my [Github Profile](https://github.com/gbaranski).
-
-# Projects
-
-See my ["/projects" page](/projects).
-
-# Technical posts
-
-TODO: Post about [Houseflow project](/projects/#houseflow)
 
 # Contact
 
