@@ -444,6 +444,9 @@ fn submit_callback(siv: &mut Cursive, device: Device) {
 }
 ```
 
+Full source code is availabe on [Github](https://github.com/gbaranski/houseflow/tree/881977b8606fe554c6dc5aed38d916ad7f0efab2/tui) as a part of [Houseflow](/projects#houseflow) project
+
+
 ## Why cursive?
 
 I've choosed it over [`tui-rs`](https://github.com/fdehau/tui-rs), because `cursive` provides a lot of nice built-in widgets, and suits better to my use-case, you can check out comparsion made by `cursive` [here](https://github.com/gyscos/cursive/wiki/Cursive-vs-tui%E2%80%90rs).
