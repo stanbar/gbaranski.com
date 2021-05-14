@@ -6,7 +6,9 @@ cargo new --bin rust-blog-tui This will create a directory with the given name a
 &lt;img src="/img/rust-tui/cover.png"
 &lt;/p>
 &lt;h2 id="introduction">Introduction&lt;/h2>
-&lt;p>This post is my process of creating TUI application in Rust for Houseflow, it will be used to trigger some events on embedded devices, like turning on lights and etc.&lt;/p>
+&lt;p>This post is my process of creating TUI application in Rust for Houseflow, it
+will be used to trigger some events on embedded devices, like turning on lights
+and etc.&lt;/p>
 &lt;h2 id="goal">Goal&lt;/h2>
 &lt;p>I&amp;rsquo;d like to make something similar to &lt;a href="https://github.com/hrkfdn/ncspot">&lt;code>ncspot&lt;/code>&lt;/a>, Spotify Client in CLI, which is using &lt;a href="https://github.com/gyscos/cursive">&lt;code>cursive&lt;/code>&lt;/a>.&lt;/p>
 &lt;p>&lt;img src="/img/ncspot-screenshot.png" alt="screenshot of running ncspot">&lt;/p>
