@@ -291,5 +291,6 @@ Some(EventResult::Consumed(None))
 );
 siv.add_layer(dialog);
 }
-&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="why-cursive">Why cursive?&lt;/h2>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Full source code is availabe on &lt;a href="https://github.com/gbaranski/houseflow/tree/881977b8606fe554c6dc5aed38d916ad7f0efab2/tui">Github&lt;/a> as a part of &lt;a href="/projects#houseflow">Houseflow&lt;/a> project&lt;/p>
+&lt;h2 id="why-cursive">Why cursive?&lt;/h2>
 &lt;p>I&amp;rsquo;ve choosed it over &lt;a href="https://github.com/fdehau/tui-rs">&lt;code>tui-rs&lt;/code>&lt;/a>, because &lt;code>cursive&lt;/code> provides a lot of nice built-in widgets, and suits better to my use-case, you can check out comparsion made by &lt;code>cursive&lt;/code> &lt;a href="https://github.com/gyscos/cursive/wiki/Cursive-vs-tui%E2%80%90rs">here&lt;/a>.&lt;/p></content></item></channel></rss>
