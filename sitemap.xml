@@ -3,7 +3,14 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gbaranski.com/</loc>
+    <lastmod>2021-05-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url><url>
+    <loc>https://gbaranski.com/blog/</loc>
+    <lastmod>2021-05-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gbaranski.com/blog/houseflow-tui/</loc>
+    <lastmod>2021-05-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gbaranski.com/projects/</loc>
     <priority>0</priority>
