@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://gbaranski.com/</loc>
-    <lastmod>2021-05-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url><url>
-    <loc>https://gbaranski.com/blog/</loc>
-    <lastmod>2021-05-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gbaranski.com/blog/houseflow-tui/</loc>
-    <lastmod>2021-05-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gbaranski.com/projects/</loc>
-    <priority>0</priority>
-  </url>
-</urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>/about/</loc><lastmod>2021-05-14T00:00:00+00:00</lastmod></url><url><loc>/posts/rust-tui/</loc><lastmod>2021-05-12T00:00:00+00:00</lastmod></url><url><loc>/</loc><lastmod>2021-05-12T00:00:00+00:00</lastmod></url><url><loc>/tags/houseflow/</loc><lastmod>2021-05-12T00:00:00+00:00</lastmod></url><url><loc>/posts/</loc><lastmod>2021-05-12T00:00:00+00:00</lastmod></url><url><loc>/tags/rust/</loc><lastmod>2021-05-12T00:00:00+00:00</lastmod></url><url><loc>/tags/</loc><lastmod>2021-05-12T00:00:00+00:00</lastmod></url><url><loc>/tags/tui/</loc><lastmod>2021-05-12T00:00:00+00:00</lastmod></url><url><loc>/categories/</loc></url><url><loc>/projects/</loc></url></urlset>

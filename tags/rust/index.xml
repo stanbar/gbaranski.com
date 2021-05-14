@@ -1,10 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>gbaranski</title><link>/</link><description>Recent content on gbaranski</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 12 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>/about/</link><pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate><guid>/about/</guid><description>About me High school student. Open-source enthusiast, full stack experience with different kind of applications, my Github Profile.
-Contact Github: gbaranski
-Email: root@gbaranski.com</description><content>&lt;h1 id="about-me">About me&lt;/h1>
-&lt;p>High school student. Open-source enthusiast, full stack experience with different kind of applications, my &lt;a href="https://github.com/gbaranski">Github Profile&lt;/a>.&lt;/p>
-&lt;h1 id="contact">Contact&lt;/h1>
-&lt;p>Github: &lt;a href="https://github.com/gbaranski">gbaranski&lt;/a>&lt;/p>
-&lt;p>Email: &lt;a href="mailto:root@gbaranski.com">root@gbaranski.com&lt;/a>&lt;/p></content></item><item><title>Creating ncurses-like TUI Applications in Rust using Cursive</title><link>/posts/rust-tui/</link><pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate><guid>/posts/rust-tui/</guid><description>Introduction This post is my process of creating TUI application in Rust for Houseflow, it will be used to trigger some events on embedded devices, like turning on lights and etc.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>rust on gbaranski</title><link>/tags/rust/</link><description>Recent content in rust on gbaranski</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 12 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/rust/index.xml" rel="self" type="application/rss+xml"/><item><title>Creating ncurses-like TUI Applications in Rust using Cursive</title><link>/posts/rust-tui/</link><pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate><guid>/posts/rust-tui/</guid><description>Introduction This post is my process of creating TUI application in Rust for Houseflow, it will be used to trigger some events on embedded devices, like turning on lights and etc.
 Goal I&amp;rsquo;d like to make something similar to ncspot, Spotify Client in CLI, which is using cursive.
 Getting started The first step is to initialize an empty project
 cargo new --bin rust-blog-tui This will create a directory with the given name and few files inside.</description><content>
@@ -296,38 +290,4 @@ Some(EventResult::Consumed(None))
 siv.add_layer(dialog);
 }
 &lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="why-cursive">Why cursive?&lt;/h2>
-&lt;p>I&amp;rsquo;ve choosed it over &lt;a href="https://github.com/fdehau/tui-rs">&lt;code>tui-rs&lt;/code>&lt;/a>, because &lt;code>cursive&lt;/code> provides a lot of nice built-in widgets, and suits better to my use-case, you can check out comparsion made by &lt;code>cursive&lt;/code> &lt;a href="https://github.com/gyscos/cursive/wiki/Cursive-vs-tui%E2%80%90rs">here&lt;/a>.&lt;/p></content></item><item><title>Projects</title><link>/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/projects/</guid><description>My projects All of them are available on my Github profile
-Houseflow Home automation platform, the project in which I put the most effort. Started it at the very beginning of the programming journey. This project involves a lot of different topics, like networking, electronics, mobile and web development, databases, devops, etc.
-Made using
-Rust for high performance networking services with low memory footprint. My plan is to run that on cheap Raspberry Pi.</description><content>&lt;h1 id="my-projects">My projects&lt;/h1>
-&lt;p>All of them are available on my &lt;a href="https://github.com/gbaranski">Github&lt;/a> profile&lt;/p>
-&lt;h2 id="houseflow">Houseflow&lt;/h2>
-&lt;p>Home automation platform, the project in which I put the most effort. Started it at the very beginning of the programming journey. This project involves a lot of different topics, like networking, electronics, mobile and web development, databases, devops, etc.&lt;/p>
-&lt;p>Made using&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://www.rust-lang.org/">Rust&lt;/a> for high performance networking services with low memory footprint. My plan is to run that on cheap Raspberry Pi.&lt;/li>
-&lt;li>&lt;a href="https://golang.org/">Go&lt;/a> for OAuth2 Server implementation for Google Smart Home Actions.&lt;/li>
-&lt;li>&lt;a href="https://en.wikipedia.org/wiki/C_(programming_language)">C&lt;/a> for Embedded devices, including ESP8266.&lt;/li>
-&lt;li>&lt;a href="https://www.postgresql.org/">PostgreSQL&lt;/a> as primary database for storing users and devices.&lt;/li>
-&lt;/ul>
-&lt;p>Previously also&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://www.typescriptlang.org/">Typescript&lt;/a> for Web application and backend&lt;/li>
-&lt;li>&lt;a href="https://reactjs.org/">React&lt;/a> for Web application&lt;/li>
-&lt;li>&lt;a href="https://flutter.dev/">Flutter&lt;/a> for mobile application&lt;/li>
-&lt;li>&lt;a href="https://www.mongodb.com/">MongoDB&lt;/a> as primary database, abandoned because I wanted to learn more about relational databases&lt;/li>
-&lt;li>&lt;a href="https://mqtt.org/">MQTT&lt;/a> as transport layer protocol between embedded devices and services.&lt;/li>
-&lt;/ul>
-&lt;h2 id="lightmq">LightMQ&lt;/h2>
-&lt;p>Lightweight client-server messaging protocol. Intented to work for &lt;a href="#houseflow">Houseflow&lt;/a>, as a replacement to MQTT which don&amp;rsquo;t really fit into my use-case. Now work is continued under new name Lighthouse at &lt;a href="#houseflow">Houseflow&lt;/a>.&lt;/p>
-&lt;p>Made using &lt;a href="https://golang.org/">Go&lt;/a>.&lt;/p>
-&lt;p>&lt;a href="https://github.com/gbaranski/lightmq">Github Repository&lt;/a>&lt;/p>
-&lt;h2 id="cryptogram">Cryptogram&lt;/h2>
-&lt;p>Decentralized P2P messaging app. Allows real-time messaging without server.&lt;/p>
-&lt;p>Made using &lt;a href="https://golang.org/">Go&lt;/a> and &lt;a href="https://libp2p.io/">LibP2P&lt;/a>.&lt;/p>
-&lt;p>&lt;a href="https://github.com/gbaranski/cryptogram">Github Repository&lt;/a>&lt;/p>
-&lt;h2 id="openflavour">OpenFlavour&lt;/h2>
-&lt;p>My first steps in databases, scraping data from e-cig flavours manufacturers and providing service for &lt;a href="https://vapetool.app/">VapeTool&lt;/a>.&lt;/p>
-&lt;p>Made using Typescript.&lt;/p>
-&lt;p>&lt;a href="https://github.com/gbaranski/OpenFlavour-API">API Github Repository&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://github.com/gbaranski/OpenFlavour-Scraper">Scrapers Github Repository&lt;/a>&lt;/p></content></item></channel></rss>
+&lt;p>I&amp;rsquo;ve choosed it over &lt;a href="https://github.com/fdehau/tui-rs">&lt;code>tui-rs&lt;/code>&lt;/a>, because &lt;code>cursive&lt;/code> provides a lot of nice built-in widgets, and suits better to my use-case, you can check out comparsion made by &lt;code>cursive&lt;/code> &lt;a href="https://github.com/gyscos/cursive/wiki/Cursive-vs-tui%E2%80%90rs">here&lt;/a>.&lt;/p></content></item></channel></rss>
