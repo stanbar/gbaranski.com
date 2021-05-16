@@ -6,7 +6,6 @@ paginate = 5
 
 enableEmoji = true
 math = false
-googleAnalytics = "G-E2VXN66JK3"
 
 [markup]
   [markup.highlight]
