@@ -4,6 +4,8 @@ title = "About"
 theme = "terminal"
 paginate = 5
 
+
+
 enableEmoji = true
 math = false
 
