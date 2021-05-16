@@ -3,7 +3,7 @@ title = "Creating ncurses-like TUI Applications in Rust using Cursive"
 date = 2021-05-12
 author = "gbaranski"
 tags = ["rust", "cursive", "tui", "houseflow"]
-description = """This post is my process of creating TUI application in Rust for [Houseflow](/projects/#houseflow), it will be used to trigger some events on embedded devices, like turning on lights and etc. 
+description = """A post describing creating a TUI application in Rust for the [Houseflow](/projects/#houseflow) project. It enables triggering events, like turning on lights, on connected IoT devices. 
 """
 showFullContent = false
 
@@ -17,13 +17,12 @@ showFullContent = false
 
 ## Introduction
 
-This post is my process of creating TUI application in Rust for Houseflow, it
-will be used to trigger some events on embedded devices, like turning on lights
-and etc. 
+A post describing creating a TUI application in Rust for the [Houseflow](/projects/#houseflow) project. 
+It enables triggering events, like turning on lights, on connected IoT devices. 
 
 ## Goal
 
-I'd like to make something similar to [`ncspot`](https://github.com/hrkfdn/ncspot), Spotify Client in CLI, which is using [`cursive`](https://github.com/gyscos/cursive).
+The goal of this project is to create something similar to [`ncspot`](https://github.com/hrkfdn/ncspot), a Spotify client in CLI that uses the [`cursive`](https://github.com/gyscos/cursive).
 
 ![screenshot of running ncspot](/img/ncspot-screenshot.png)
 
@@ -76,7 +75,7 @@ fn main() -> anyhow::Result<()> {
 }
 ```
 
-Notice the `main` return type, we're using `Result` from `anyhow` crate, that will allow us returning `anyhow::Error` directly from `main` function.
+Notice the return type of the `main` function. We're using `Result` from the `anyhow` crate, which will allow us to return `anyhow::Error` directly from the `main` function.
 
 We can now test if it works by running
 
@@ -84,7 +83,7 @@ We can now test if it works by running
 cargo run
 ```
 
-What we should see is screen with simple Dialog
+What we should see is a screen with a simple Dialog.
 
 ![screenshot of program with dialog on middle of the screen](/img/rust-tui/basic.png)
 
@@ -119,7 +118,7 @@ use device::{Device, DeviceID};
 
 ### Generating fake devices
 
-Since we're not operating on real devices yet, we'll generate fake devices, for random numbers we'll need [`rand`](https://lib.rs/crates/rand), add this to our `Cargo.toml` dependencies section
+Since we're not operating on real devices yet, we'll generate fake devices. For the source of randomness, we'll use [`rand`](https://lib.rs/crates/rand). Add the following line to our `Cargo.toml` dependencies section
 
 ```toml
 # Cargo.toml
@@ -132,7 +131,7 @@ rand = "0.8"
 
 ##### Random Device IDs
 
-To generate DeviceID using `rand`, we'll need to implement a Distribution for it
+To generate a DeviceID using `rand`, we'll need to implement a Distribution for it
 
 ```rust
 // src/device.rs
@@ -148,7 +147,7 @@ impl distributions::Distribution<DeviceID> for distributions::Standard {
 
 ##### Iter of random devices
 
-Since we've got function which will generate random DeviceID for us, we can create function which will return infinite Iterator of Device's with random DeviceID's
+Since we've got the function that generates random DeviceID, we can create a new function that returns an infinite Iterator of Devices with random DeviceID
 
 ```rust
 // src/device.rs
@@ -159,7 +158,7 @@ pub fn get_devices() -> impl Iterator<Item = Device> {
 }
 ```
 
-And also import this function inside `main.rs`
+Import this function inside `main.rs`
 
 ```rust
 // src/main.rs
@@ -167,9 +166,9 @@ And also import this function inside `main.rs`
 use device::{Device, DeviceID, get_devices};
 ```
 
-### Displaying list of devices to user
+### Displaying a list of devices to the user
 
-To present `DeviceID` to user, we need to implement `std::fmt::Display` trait on it, we're going to use hex encoding of inner bytes, so we'll need [`hex`](https://lib.rs/crates/hex) crate, let's add it to our `Cargo.toml` dependencies section.
+To present `DeviceID` to the user, we need to implement the `std::fmt::Display` trait. We're going to use the hex encoding of inner bytes so that we need to add the [`hex`](https://lib.rs/crates/hex) crate. Let's add it to our `Cargo.toml`'s dependencies section.
 
 ```toml
 # Cargo.toml
@@ -180,7 +179,7 @@ hex = "0.4"
 # ...
 ```
 
-And implementation of `std::fmt::Display` for `DeviceID`
+And implementation of the `std::fmt::Display` trait for the `DeviceID`
 
 ```rust
 // src/device.rs
@@ -196,14 +195,14 @@ impl fmt::Display for DeviceID {
 
 ##### SelectView
 
-To display list of devices on which we can click, we're going to use [`SelectView`](https://docs.rs/cursive/0.16.3/cursive/views/struct.SelectView.html)
+To display a list of the devices on which we can click, we use [`SelectView`](https://docs.rs/cursive/0.16.3/cursive/views/struct.SelectView.html)
 
 ```rust
 // src/main.rs
 
 use cursive::{views::SelectView, Cursive, View};
 
-/// Returns SelectView whichs shows all available devices to user
+/// Returns SelectView whichs shows all available devices to the user
 fn get_devices_select_view(
     devices: Vec<Device>,
     submit_callback: impl 'static + Fn(&mut Cursive, Device),
@@ -223,7 +222,7 @@ fn get_devices_select_view(
 }
 ```
 
-And now show it to user in `main` function
+And now show it to the user in `main` function
 
 ```rust
 // src/main.rs
@@ -245,14 +244,15 @@ fn main() -> anyhow::Result<()> {
 }
 ```
 
-And it looks something like that
+The result is
 
 ![screenshot of program with selectview](/img/rust-tui/selectview.png)
 
+So far so good.
 
-#### Showing dialog to user on submit callback
+#### Showing a dialog to the user on submit callback
 
-Currently selecting some device simply closes the program, we're going to show Dialog with available options for specific device
+Currently, selecting a particular device closes the program. We fix it by displaying a Dialog with the available options for the specific device.
 
 ```rust
 // src/main.rs
@@ -272,7 +272,7 @@ fn submit_callback(siv: &mut Cursive, device: Device) {
 
 ```
 
-And use it in `main`
+And use it in the `main` function
 
 ```rust
 // src/main.rs
@@ -294,15 +294,15 @@ fn main() -> anyhow::Result<()> {
 }
 ```
 
-And now we're able to select specific device, and dialog will pop up
+Now we can select a specific device, and the dialog shows up
 
 ![screenshot of program with selectview with dialog](/img/rust-tui/dialog-popup.png)
 
 #### Sending HTTP request with Send Command button
 
-Currently "Send Command" Button closes program, we're going to implement sending HTTP Request, for that we'll need [`reqwest`](https://lib.rs/crates/reqwest) and [`cursive-async-view`](https://lib.rs/crates/cursive-async-view) for displaying loader.
+Right now, the "Send Command" button closes our program. To fix that, we add a sending HTTP Request function. We start with adding the [`reqwest`](https://lib.rs/crates/reqwest) and the [`cursive-async-view`](https://lib.rs/crates/cursive-async-view) libraries for displaying a loader.
 
-Add them to dependencies section in our `Cargo.toml` 
+Add them to the dependencies section in our `Cargo.toml` 
 
 ```toml
 # Cargo.toml
@@ -314,7 +314,7 @@ reqwest = { version = "0.11", default-features = false, features = [ "blocking" 
 # ...
 ```
 
-Add function which will be called on "Send Command" button press
+Add a function that will be called on the "Send Command" button press
 
 ```rust
 // src/main.rs
@@ -341,7 +341,7 @@ fn send_command(siv: &mut Cursive, _device: &Device) {
 ```
 
 
-And update `submit_callback` to call tihs function
+Update the `submit_callback` to call that function
 ```rust
 // src/main.rs
 
@@ -361,9 +361,9 @@ fn submit_callback(siv: &mut Cursive, device: Device) {
 
 ![gif of program sending http request](/img/rust-tui/send-http-request.gif)
 
-## Fixing movement
+## Fixing the movement
 
-Currently we need to use arrows to navigate, which is quite inconvenient, let's add navigation with h/j/k/l just like in Vim.
+Currently, we need to use arrow keys for the navigation, which is quite inconvenient. Let's add the h/j/k/l navigation——just like in Vim.
 
 
 ```rust
@@ -403,7 +403,7 @@ fn get_devices_select_view(
 }
 ```
 
-And now inside Dialogs
+Also inside the Dialogs
 
 ```rust
 use cursive::{
@@ -444,9 +444,9 @@ fn submit_callback(siv: &mut Cursive, device: Device) {
 }
 ```
 
-Full source code is availabe on [Github](https://github.com/gbaranski/houseflow/tree/881977b8606fe554c6dc5aed38d916ad7f0efab2/tui) as a part of [Houseflow](/projects#houseflow) project
+The complete source code is available on the [Github repo](https://github.com/gbaranski/houseflow/tree/881977b8606fe554c6dc5aed38d916ad7f0efab2/tui) as a part of the [Houseflow](/projects#houseflow) project.
 
 
 ## Why cursive?
 
-I've choosed it over [`tui-rs`](https://github.com/fdehau/tui-rs), because `cursive` provides a lot of nice built-in widgets, and suits better to my use-case, you can check out comparsion made by `cursive` [here](https://github.com/gyscos/cursive/wiki/Cursive-vs-tui%E2%80%90rs).
+I've chosen it over [`tui-rs`](https://github.com/fdehau/tui-rs) because the `cursive` provides a lot of nice built-in widgets and suits better to my use-case; you can check out the comparison made by `cursive` [here](https://github.com/gyscos/cursive/wiki/Cursive-vs-tui%E2%80%90rs).
