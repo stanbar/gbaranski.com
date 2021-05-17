@@ -10,6 +10,49 @@ showFullContent = false
 
 +++
 
+# Introduction
+I was looking for password manager for quite long time which will meet all following requirements
+1. Open-source
+2. CLI/TUI application, mustn't be written in any scripting languauge, I don't want high startup time, I might use password manager in scripts and 0.5s startup time bottleneck is not a way to go.
+3. Android & Linux support
+4. Option for self-hosting
+5. Must be relatively easy to synchronize between multiple computers, must work on Linux and Android.
+
+## What I've tried so far
+
+### Bitwarden
+
+1. ✅ Open-source, under GNU GPLv2 License.
+2. ❌ There is CLI app, but it's written in JS which makes it horribly slow to stat up, launching `bw --help` took 544ms, it's a lot, just for comparsion [gopass](https://github.com/gopasspw/gopass) help page takes 66ms, retrieving specific password takes 200ms, huge difference.
+3. ✅ Android & Linux is fully supported, desktop app is written in Electron, which is slow and enabling Wayland's fractional scaling makes everything blurred.
+4. ✅ Yes, via [vaultwarden](https://github.com/dani-garcia/vaultwarden).
+5. ✅ Super simple to synchronize, probably easiest from all options I've mentioned here.
+
+### KeepassXC
+
+1. ✅ Open-source, under GNU GPLv3 License.
+2. ✅ There is `keepassxc-cli`.
+3. ✅ Android is supported by [KeepassDX](https://www.keepassdx.com/), I personally don't like the UI of app, Linux is supported
+4. ✅ Self-host by storing database on computer.
+5. ❌ Complicated synchronization between Linux and Android.
+
+### gopass
+
+1. ✅ Open-source, under MIT License.
+2. ✅ gopass by itself is CLI/TUI Application.
+3. ✅ Android is supported by [Android-Password-Store](https://github.com/android-password-store/Android-Password-Store), application is very nice, looks best from all mobile applications mentioned here, Linux is supported.
+4. ✅ Self-host by storing Git repo on computer.
+5. ✅ As soon as you get GPG keys working, it's super easy by pushing it to Github 
+
+### Verdict
+
+As you can see, gopass meets all of my requirements.
+
+This post is going to cover
+- GPG Keys for safe encrypting/decrypting stored keys.
+- Git repository to store passwords.
+- Synchronizing passwords between Android and Linux.
+- Setting up gopass password store.
 # Prerequisites
 
 `GPG_TTY` variable must be set to get GPG working, check if exits by `echo $GPG_TTY`, if it's not, add
