@@ -4,10 +4,9 @@ date = 2021-05-17
 author = "gbaranski"
 tags = ["password-manager", "gnupg", "gopass"]
 description = """
-A post describing my GnuPG and Password manager setup, I will use [gopass](https://github.com/gopasspw/gopass) on PC, and [Android-Password-Store](https://github.com/android-password-store/Android-Password-Store) on Android.
+A post describing my Password manager setup, I will use [gopass](https://github.com/gopasspw/gopass) on PC, and [Android-Password-Store](https://github.com/android-password-store/Android-Password-Store) on Android.
 """
 showFullContent = false
-
 +++
 
 # Introduction
