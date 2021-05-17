@@ -53,25 +53,46 @@ This post is going to cover
 - Git repository to store passwords.
 - Synchronizing passwords between Android and Linux.
 - Setting up gopass password store.
+
 # Prerequisites
 
-`GPG_TTY` variable must be set to get GPG working, check if exits by `echo $GPG_TTY`, if it's not, add
+`GPG_TTY` variable must be set to get GPG working, check if exists by `echo $GPG_TTY`, if it's not set `GPG_TTY` to output of `tty` command.
+
+Bash/ZSH: 
 ```bash
+# ~/.bashrc or ~/.zshrc
 export GPG_TTY=$(tty)
 ```
-to `~/.zshrc` or `~/.bashrc`
 
-If you're using fish, add
-```zsh
+Fish:
+```bash
+# ~/.config/fish/config.fish
 export GPG_TTY=(tty)
 ```
-to `~/.config/fish/config.fish`
 
-# Setting up GPG keys
+# Git repository
 
-### GPG Master key
+We need Git repository to store passwords, I store them in Github private repository, although it could be even self-hosted. Keep in mind that password database don't need to be super secure, of course it will be better if it will be, but the password database encrypted with password you'll use in GnuPG.
 
-Start by generating master key using
+Create Github repository using [Github CLI](https://github.com/cli/cli/)
+```bash
+$ gh repo create pass
+? Visibility Private
+? This will create the "pass" repository on GitHub. Continue? Yes
+✓ Created repository gbaranski/pass on GitHub
+? Create a local project directory for "gbaranski/pass"? No
+```
+
+# GPG keys
+
+## GPG Primary key
+
+***If you already have GPG Primary Key that you can use, you can skip this step***
+   
+Generate new GPG Key using `gpg --full-generate-key --expert`, we're using RSA because I'm not sure about ECC keys compatibility.
+
+The primary key won't be able to encrypt/sign, since we'll have sub-keys for that, primary key will be used only to create new sub-keys.
+
 ```none
 $ gpg --full-generate-key --expert
 gpg (GnuPG) 2.2.27; Copyright (C) 2021 Free Software Foundation, Inc.
@@ -143,52 +164,58 @@ You selected this USER-ID:
     "Grzegorz Baranski <root@gbaranski.com>"
 
 Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: key 2B0DFED5C9433443 marked as ultimately trusted
+gpg: directory '/home/gbaranski/.gnupg/openpgp-revocs.d' created
+gpg: revocation certificate stored as '/home/gbaranski/.gnupg/openpgp-revocs.d/226CDFD0B2C81A32E2C3DBEF2B0DFED5C9433443.rev'
+public and secret key created and signed.
+
+pub   rsa4096 2021-05-17 [C]
+      226CDFD0B2C81A32E2C3DBEF2B0DFED5C9433443
+uid                      Grzegorz Baranski <root@gbaranski.com>
 ```
 
-Use the `gpg --list-secret-keys --keyid-format LONG` command to list GPG keys for which you have both a public and private key.
+In this example root@gbaranski.com will used as GPG Key ID identifier, of course replace it with your own email when setting it up, but if you have few GPG Key IDs with the same email, check your GPG Key ID by using `gpg --list-secret-keys --keyid-format 0xLONG` and then use it instead email.
 
+Check if the keypair has been properly created
 ```none
-$ gpg --list-secret-keys --keyid-format 0xLONG
-/home/gbaranski/.gnupg/pubring.kbx
-----------------------------------
-sec   rsa4096/0x613733AF902BDC4C 2021-05-17 [C]
-      801AD69CD60DE3BAB8DB93BE21B95312C440B055
+$ gpg --list-secret-key --keyid-format 0xLONG root@gbaranski.com
+sec   rsa4096/0x2B0DFED5C9433443 2021-05-17 [C]
+      226CDFD0B2C81A32E2C3DBEF2B0DFED5C9433443
 uid                   [ultimate] Grzegorz Baranski <root@gbaranski.com>
+ssb   rsa4096/0x1EF8CFF39BDF9EB4 2021-05-17 [E]
 ```
-
-From the list copy GPG Key ID you'd like to use. In this example GPG key ID is `0x613733AF902BDC4C`.
 
 ### Backing up primary secret key
 
-We should copy `~/.gnupg` to some safe place, such as USB Drive, plug in your USB drive, check where it is by using `lsblk`, and mount it on `/media/usb`
-```
-$ sudo mkdir -p /media/usb
-$ lsblk
-NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda           8:0    1   7.3G  0 disk
-└─sda1        8:1    1   7.3G  0 part
-nvme0n1     259:0    0 476.9G  0 disk
-├─nvme0n1p1 259:1    0    10G  0 part
-├─nvme0n1p2 259:2    0   290G  0 part /home
-├─nvme0n1p3 259:3    0     1G  0 part /boot
-└─nvme0n1p4 259:4    0    79G  0 part /
-$ sudo mount -o umask=0022,uid=${UID} /dev/sda1 /media/usb  # For bash/zsh/...
-$ sudo mount -o umask=0022,uid=(id -u) /dev/sda1 /media/usb # For fish
-$ cp -r ~/.gnupg /media/usb/gnupg
-```
+Copy `~/.gnupg` to some safe place, such as USB Stick. In my example it will be at `/media/usb/gnupg`, if mounting it there is not possible, you can use soft links to accomplish this.
 
-Now we can safely delete GPG key from PC
+Remove key from computer since it's safely stored
 ```bash
-$ gpg --delete-key 0x613733AF902BDC4C
+$ gpg --delete-key root@gbaranski.com
 ```
 
-### Generating GPG sub key
+## GPG Sub Key
 
-Start by running `gpg --expert --edit-key 0x613733AF902BDC4C`, replacing `0x613733AF902BDC4C` with GPG Primary Key ID.
+The only usage of GPG Sub Key will be encoding, so disallow "Sign" which is allowed by default.
 
-```bash
-$ gpg --homedir /media/usb/gnupg --expert --edit-key 0x613733AF902BDC4C
-addcardkey  addkey      addphoto    addrevoker  adduid
+Generate new GPG Sub Key
+```none
+$ gpg --homedir /media/usb/gnupg --expert --edit-key root@gbaranski.com
+gpg (GnuPG) 2.2.27; Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Secret key is available.
+
+sec  rsa4096/2B0DFED5C9433443
+     created: 2021-05-17  expires: never       usage: C
+     trust: ultimate      validity: ultimate
+[ultimate] (1). Grzegorz Baranski <root@gbaranski.com>
+
 gpg> addkey
 Please select what kind of key you want:
    (3) DSA (sign only)
@@ -241,59 +268,61 @@ some other action (type on the keyboard, move the mouse, utilize the
 disks) during the prime generation; this gives the random number
 generator a better chance to gain enough entropy.
 
-sec  rsa4096/613733AF902BDC4C
+sec  rsa4096/2B0DFED5C9433443
      created: 2021-05-17  expires: never       usage: C
      trust: ultimate      validity: ultimate
-ssb  rsa4096/3EE324A9B640B56C
-     created: 2021-05-17  expires: never       usage: E
-ssb  rsa4096/3D106246AB342382
+ssb  rsa4096/1EF8CFF39BDF9EB4
      created: 2021-05-17  expires: never       usage: E
 [ultimate] (1). Grzegorz Baranski <root@gbaranski.com>
 
 gpg> save
 ```
 
-We can check if it exist in key list
-```
+### Veryfing generated sub-key
+
+#### Check whether sub-key exists in keys list
+
+```none
 $ gpg --homedir /media/usb/gnupg --expert --list-keys --keyid-format 0xLONG
 /media/usb/gnupg/pubring.kbx
 ----------------------------
-pub   rsa4096/0x613733AF902BDC4C 2021-05-17 [C]
-      2561C4FA71384ADB4F3C64A8613733AF902BDC4C
+pub   rsa4096/0x2B0DFED5C9433443 2021-05-17 [C]
+      226CDFD0B2C81A32E2C3DBEF2B0DFED5C9433443
 uid                   [ultimate] Grzegorz Baranski <root@gbaranski.com>
-sub   rsa4096/0x3EE324A9B640B56C 2021-05-17 [E]
-sub   rsa4096/0x3D106246AB342382 2021-05-17 [E]
+sub   rsa4096/0x1EF8CFF39BDF9EB4 2021-05-17 [E]
 ```
-As you can see, there is new sub-key, in my case there are already two sub-keys
 
-We can verify if encrypting/decrypting works with one of those sub-keys
-```bash
-$ echo "hello there!" | gpg --homedir /media/usb/gnupg --recipient 0x3EE324A9B640B56C --encrypt | gpg --homedir /media/usb/gnupg --decrypt
-gpg: encrypted with 4096-bit RSA key, ID 3D106246AB342382, created 2021-05-17
+Sub-key has been created with Key ID `0x1EF8CFF39BDF9EB4`, copy this ID, we will need it in the next step
+
+##### Check if encrypting/decrypting works properly
+
+```none
+$ echo "hello there!" | gpg --homedir /media/usb/gnupg --recipient root@gbaranski.com --encrypt | gpg --homedir /media/usb/gnupg --decrypt
+gpg: encrypted with 4096-bit RSA key, ID 1EF8CFF39BDF9EB4, created 2021-05-17
       "Grzegorz Baranski <root@gbaranski.com>"
 hello there!
 ```
 
-Repeat generating GPG key for each machine you want to use it on
-
-### Exporting sub-keys
+### Exporting from store
 
 ```bash
-$ gpg --homedir /media/usb/gnupg --output /tmp/gpg-pubkey --export 0x613733AF902BDC4C
-$ gpg --homedir /media/usb/gnupg --output /tmp/gpg-subkey --export-secret-subkeys 0x613733AF902BDC4C! 0x3EE324A9B640B56C!
+$ gpg --homedir /media/usb/gnupg --output /tmp/gpg-subkey --export-secret-subkeys root@gbaranski.com! SUB_KEY_ID!
 $ gpg --homedir /media/usb/gnupg --export-ownertrust > /tmp/gpg-ownertrust
 ```
-Where `0x613733AF902BDC4C` is primary key ID, and `0x3EE324A9B640B56C` is sub key ID we want to export
 
-#### Importing sub-key on PC
+**Replace SUB_KEY_ID with ID copied from previous step, dont forget exclamation mark**
 
-We can now remove primary secret key, and add subkey
+*Example with `0x1EF8CFF39BDF9EB4` as SUB_KEY_ID*
+```bash
+$ gpg --homedir /media/usb/gnupg --output /tmp/gpg-subkey --export-secret-subkeys root@gbaranski.com! 0x1EF8CFF39BDF9EB4!
+```
+
+### Importing on the same PC
 
 ```bash
-$ gpg --import /tmp/gpg-pubkey
 $ gpg --import /tmp/gpg-subkey
 $ gpg --import-ownertrust /tmp/gpg-ownertrust
-$ rm /tmp/gpg-subkey /tmp/gpg-ownertrust
+$ rm /tmp/gpg-subkey
 ```
 
 Verify that `gpg -K` shows `sec#` instead of just `sec` for primary key.
@@ -302,13 +331,13 @@ $ gpg -K
 /home/gbaranski/.gnupg/pubring.kbx
 ----------------------------------
 sec#  rsa4096 2021-05-17 [C]
-      2561C4FA71384ADB4F3C64A8613733AF902BDC4C
+      226CDFD0B2C81A32E2C3DBEF2B0DFED5C9433443
 uid           [ultimate] Grzegorz Baranski <root@gbaranski.com>
 ssb   rsa4096 2021-05-17 [E]
 ```
 
-Now we can set up `gopass` with previosuly created GitHub repository
-```bash
+Integrate gopass with previously created Github repository
+```none
 $ gopass setup
 
    __     _    _ _      _ _   ___   ___
@@ -322,16 +351,17 @@ $ gopass setup
 🌟 Initializing a new password store ...
 🌟 Configuring your password store ...
 🎮 Please select a private key for encrypting secrets:
-[0] gpg - 0x613733AF902BDC4C - Grzegorz Baranski <root@gbaranski.com>
+[0] gpg - 0x2B0DFED5C9433443 - Grzegorz Baranski <root@gbaranski.com>
 Please enter the number of a key (0-0, [q]uit) (q to abort) [0]:
 Please enter an email address for password store git config []: root@gbaranski.com
 ❓ Do you want to add a git remote? [y/N/q]: Y
 Configuring the git remote ...
 Please enter the git remote for your shared store []: git@github.com:gbaranski/pass.git
+✅ Configured
 ```
 
-And test if it works by adding example password and viewing it
-```
+Add example password to store using `gopass create`
+```none
 $ gopass create
 🌟 Welcome to the secret creation wizard (gopass create)!
 🧪 Hint: Use 'gopass edit -c' for more control!
@@ -349,62 +379,77 @@ Enter password for gbaranski:
 Retype password for gbaranski:
   [4] Comments                               []:
 ✅ Credentials saved to "websites/login.gbaranski.com/gbaranski"
+```
 
+View newly added password using `gopass show`
+
+```none
 $ gopass show websites/login.gbaranski.com/gbaranski
 Secret: websites/login.gbaranski.com/gbaranski
 
-hello
+my-password
 comment:
 url: login.gbaranski.com
 username: gbaranski
 ````
 
+### Importing on remote PC
 
-#### Importing sub-key on Android
+Use some file-transfer program e.g [`croc`](https://github.com/schollz/croc).
 
-Send keys to Android using [`croc`](https://github.com/schollz/croc)
-```bash
-$ croc send /tmp/gpg-subkey /tmp/gpg-pubkey
-Sending 2 files (6.8 kB)
-Code is: 8043-dynamic-gong-resume
+Send keys from PC-A to PC-B
+
+On PC-A
+```none
+$ croc send /tmp/gpg-subkey /tmp/gpg-ownertrust
+Sending 2 files (3.7 kB)
+Code is: 0560-mile-mercury-deliver
 On the other computer run
 
-croc 8043-dynamic-gong-resume
+croc 0560-mile-mercury-deliver
 
-Sending (->192.168.1.10:49316)
-gpg-subkey 100% |████████████████████| (3.5/3.5 kB, 1.378 MB/s) 1/2
-gpg-pubkey 100% |████████████████████| (3.3/3.3 kB, 1.205 MB/s) 2/2
+Sending (->[fe80::86bd:8740:e58d:993b%wlan0]:42712)
+gpg-subkey     100% |████████████████████| (3.5/3.5 kB, 1.931 MB/s) 1/2
+gpg-ownertrust 100% |████████████████████| (167/167 B, 245.872 kB/s) 2/2
 ```
 
-To use import PGP Keys on Android, we use OpenKeychain app, available in [`F-Droid`](https://f-droid.org/en/packages/org.sufficientlysecure.keychain/).
-First import gpg-pubkey, and then gpg-subkey
+On PC-B
+```none
+$ croc --out /tmp 0560-mile-mercury-deliver
 
+Accept 2 files (3.7 kB)? (y/n) y
 
-
-### Exporting keys to Android
-
-
-Import PGP Keys in OpenKeychain app, available in 
-
-
-# Setting up gopass password manager
-
-### Creating new Github repository
-
-We will store passwords in Github private repository(although it can be anywhere), create Github repo using
-```
-gh repo create pass
+Receiving (<-[fe80::6db:47aa:c755:f345%enp3s0]:9009)
+ gpg-subkey     100% |████████████████████| (3.5/3.5 kB, 512.473 kB/s) 1/2
+ gpg-ownertrust 100% |████████████████████| (167/167 B, 25.553 kB/s) 2/2
 ```
 
-### Adding new password in gopass
+Continue with [Importing on the same PC](#importing-on-the-same-pc)
 
-[Install](https://github.com/gopasspw/gopass) `gopass`
+#### Importing on Android
 
-Initialize password store using `gopass setup`, add new passwords using `gopass create`. 
+Send keys to Android using [`croc`](https://github.com/schollz/croc)
+```none
+$ croc send /tmp/gpg-subkey
+Sending 'gpg-subkey' (3.5 kB)
+Code is: 3343-system-book-sinatra
+On the other computer run
 
+croc 3343-system-book-sinatra
 
-### Using password sfrom PC on Android
+Sending (->192.168.1.214:37712)
+ 100% |████████████████████| (3.5/3.5 kB, 4.728 MB/s)
+```
 
-Sync gopass with remote using `gopass sync`
+Receive them on Android using [Croc Android](https://f-droid.org/en/packages/com.github.howeyc.crocgui/)
 
-Open [Android-Password-Store](https://github.com/android-password-store/Android-Password-Store) and select "Clone remote repo". I'm using `git@github.com:gbaranski/pass.git` as repository URL, and SSH Key as authentication mode. After pulling from repo, all should work, read passwords using GPG Key we previously uploaded using `croc`.
+To import PGP Key on Android, use OpenKeychain app, available in [`F-Droid`](https://f-droid.org/en/packages/org.sufficientlysecure.keychain/).
+Import gpg-subkey by selecting  and then "Import from File".
+
+Open [Android-Password-Store](https://github.com/android-password-store/Android-Password-Store), clone repository from Github and view your passwords.
+
+# Conclusions
+
+gopass is awesome password manager for people who like using things in terminal, for me setting up GPG keys correctly was the hardest thing.
+
+I hope this article was useful and saved you some time. 👋
