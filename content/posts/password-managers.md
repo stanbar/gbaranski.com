@@ -1,8 +1,8 @@
 +++
-title = "GnuPG & Password manager setup"
+title = "My setup & thoughts about password managers"
 date = 2021-05-17
 author = "gbaranski"
-tags = ["password-manager", "gnupg", "gopass"]
+tags = ["password-manager", "gopass"]
 description = """
 A post describing my Password manager setup, I will use [gopass](https://github.com/gopasspw/gopass) on PC, and [Android-Password-Store](https://github.com/android-password-store/Android-Password-Store) on Android.
 """
@@ -71,7 +71,9 @@ export GPG_TTY=(tty)
 
 # Git repository
 
-We need Git repository to store passwords, I store them in Github private repository, although it could be even self-hosted. Keep in mind that password database don't need to be super secure, of course it will be better if it will be, but the password database encrypted with password you'll use in GnuPG.
+Git repository is required to store passwords, however gopass also [supports](https://github.com/gopasspw/gopass/blob/master/docs/setup.md#storing-and-syncing-your-password-store-with-google-drive--dropbox--syncthing--etc) other ways to store passwords, but Git Repo seems best option for me, I store them in Github private repository, although it could be even self-hosted. 
+
+Keep in mind that password database is not the top secret, of course it will be better if it will be private, but the password database by itself will be encrypted with password.
 
 Create Github repository using [Github CLI](https://github.com/cli/cli/)
 ```bash
@@ -88,9 +90,9 @@ $ gh repo create pass
 
 ***If you already have GPG Primary Key that you can use, you can skip this step***
    
-Generate new GPG Key using `gpg --full-generate-key --expert`, we're using RSA because I'm not sure about ECC keys compatibility.
+Generate new GPG Key using `gpg --full-generate-key --expert`, in this example we're using RSA because I'm not sure about ECC keys compatibility.
 
-The primary key won't be able to encrypt/sign, since we'll have sub-keys for that, primary key will be used only to create new sub-keys.
+The primary key won't be able to encrypt/sign, there will have sub-keys for that, primary key will be used only for creating new sub-keys if needed, however for password managament purposes we're going to use only one sub-key for all computers.
 
 ```none
 $ gpg --full-generate-key --expert
@@ -291,7 +293,7 @@ uid                   [ultimate] Grzegorz Baranski <root@gbaranski.com>
 sub   rsa4096/0x1EF8CFF39BDF9EB4 2021-05-17 [E]
 ```
 
-Sub-key has been created with Key ID `0x1EF8CFF39BDF9EB4`, copy this ID, we will need it in the next step
+Sub-key has been created with Key ID `0x1EF8CFF39BDF9EB4`, copy this ID, it will be needed in next step.
 
 ##### Check if encrypting/decrypting works properly
 
