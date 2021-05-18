@@ -1,5 +1,5 @@
 +++
-title = "On password managers"
+title = "Comparison of password managers and my setup"
 date = 2021-05-17
 author = "gbaranski"
 tags = ["password-manager", "gopass"]
